@@ -91,6 +91,10 @@ public class CardScrollActivity extends Activity {
 			return card;
 		}
 
+		/**
+		 * Returns the number of view types for the Card class. The Card class
+		 * has a convenience method that returns this value for you.
+		 */
 		@Override
 		public int getViewTypeCount() {
 			int type = Card.getViewTypeCount();
@@ -98,6 +102,11 @@ public class CardScrollActivity extends Activity {
 			return type;
 		}
 
+		/**
+		 * Returns the view type of this card, so the system can figure out
+		 * if it can be recycled. The Card.getItemViewType() method
+		 * returns it's own type.
+		 */
 		@Override
 		public int getItemViewType(int position){
 			int itemType = mCards.get(position).getItemViewType();
@@ -105,6 +114,12 @@ public class CardScrollActivity extends Activity {
 			return itemType; 
 		}
 
+		/**
+		 * When requesting a card from the adapter, recycle the view if possible.
+		 * The Card.getView() method automatically recycles the convertView it
+		 * receives, if possible, or creates a new view if convertView is null or
+		 * of the wrong type.
+		 */
 		@Override
 		public View getView(int position, View convertView,
 				ViewGroup parent) {
